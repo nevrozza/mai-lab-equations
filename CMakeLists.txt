@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 4.0)
-project(mai_lab_equation)
+project(mai_lab_equation C)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_C_STANDARD 17)
 
-add_executable(mai_lab_equation main.cpp)
+add_executable(mai_lab_equation
+        main.c)
