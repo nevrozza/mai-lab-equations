@@ -15,7 +15,6 @@ int main() {
 
     run_dichotomy_method(F, a, b, eps); // Без производных
 
-    // analytic
     printf("\n=========== Аналитическое dF ===========\n");
     run_iterations_method(F, iter_F, d_iter_F_analytic, a, b, eps, convergence_steps_count, max_iterations_count);
     putchar('\n');
