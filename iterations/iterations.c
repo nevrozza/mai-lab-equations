@@ -21,7 +21,8 @@ bool check_iter_convergence(double (*d_iter_f)(double), const double a, const do
 double iterations_method(double (*iter_f)(double), const double x0, const double eps, const int max_iter, int *iter) {
     double prev_x = x0;
     double cur_x = 0;
-    for (*iter = 1; *iter <= max_iter; (*iter)++) { // считаем кол-во итераций
+    for (*iter = 1; *iter <= max_iter; (*iter)++) {
+        // считаем кол-во итераций
         cur_x = iter_f(prev_x);
         if (fabs(cur_x - prev_x) < eps) {
             return cur_x;
@@ -30,25 +31,22 @@ double iterations_method(double (*iter_f)(double), const double x0, const double
     }
 
     // беда (не сошлось)
-    return -1;
+    return NAN;
 }
 
-void run_iterations_method(const double a, const double b) {
-    const int convergence_steps_count = 100;
-    const int max_iterations_count = 100;
-    const double eps = DBL_EPSILON;
-
+void run_iterations_method(const double a, const double b, const double eps, const int convergence_steps_count,
+                           const int max_iterations_count) {
     printf("МЕТОД ИТЕРАЦИЙ\n");
     if (check_iter_convergence(d_iter_F_analytic, a, b, convergence_steps_count)) {
         const double x0 = (a + b) / 2.0;
         int iter;
         const double ans = iterations_method(iter_F, x0, eps, max_iterations_count, &iter);
-        if (ans == -1) {
-            printf("Метод не сошелся за %d итераций", max_iterations_count);
-        } else {
+        if (!isnan(ans)) {
             printf("Корень: %.10f (итераций: %d)\n", ans, iter);
             const double value = fabs(F(ans));
             printf("Невязка: %.15e", value);
+        } else {
+            printf("Метод не сошелся за %d итераций", max_iterations_count);
         }
     } else {
         printf("Метод итераций не применим.");

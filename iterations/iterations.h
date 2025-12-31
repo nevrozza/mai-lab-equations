@@ -3,9 +3,8 @@
 #include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
-#include <float.h>
 #include "../common/common.h"
 
-void run_iterations_method(double a, double b);
+void run_iterations_method(double a, double b, double eps, int convergence_steps_count, int max_iterations_count);
 
 #endif //ITERATIONS_H

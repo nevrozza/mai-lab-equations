@@ -1,6 +1,7 @@
 #ifndef COMMON_H
 #define COMMON_H
 #include <math.h>
+
 double F(double x);
 
 double dF_analytic(double x);
