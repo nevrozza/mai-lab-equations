@@ -42,8 +42,8 @@ double d_iter_F_numeric(const double x) {
 void print_answer(double (*f)(double), const double ans, const int iter, char if_nan[]) {
     if (!isnan(ans)) {
         printf("Корень: %.10f (итераций: %d)\n", ans, iter);
-        const double value = fabs(f(ans));
-        printf("Невязка: %.15e", value);
+        const double value = f(ans);
+        printf("F(x) = %.15e", value);
     } else {
         printf("%s", if_nan);
     }
