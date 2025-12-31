@@ -34,21 +34,15 @@ double newton_method(double (*f)(double), double (*df)(double), const double x0,
 
 void run_newton_method(double (*f)(double), double (*df)(double), double (*ddf)(double), const double a, const double b, const double eps, const int convergence_steps_count,
                            const int max_iterations_count) {
-    printf("МЕТОД Ньютона\n");
+    printf("МЕТОД НЬЮТОНА\n");
     // ctrl+c from iterations method...
     if (check_newton_convergence(f, df, ddf, a, b, convergence_steps_count)) {
         const double x0 = (a + b) / 2.0;
         int iter;
         const double ans = newton_method(f, df, x0, eps, max_iterations_count, &iter);
-        if (!isnan(ans)) {
-            printf("Корень: %.10f (итераций: %d)\n", ans, iter);
-            const double value = fabs(f(ans));
-            printf("Невязка: %.15e", value);
-        } else {
-            printf("Метод не сошелся за %d итераций", max_iterations_count);
-        }
+        print_iterations_answer(f, ans, iter, max_iterations_count);
     } else {
-        printf("Метод Ньютона не применим.");
+        printf("Метод Ньютона не применим");
     }
     printf("\n");
 }

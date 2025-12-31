@@ -20,13 +20,6 @@ void run_dichotomy_method(double (*f)(double), double a, double b, const double 
 
     int iter;
     const double ans = dichotomy_method(f, a, b, eps, &iter);
-    if (!isnan(ans)) {
-        printf("Корень: %.10f (итераций: %d)\n", ans, iter);
-        const double value = fabs(f(ans));
-        printf("Невязка: %.15e", value);
-    } else {
-        printf("На концах отрезка одинаковые знаки! (корня нет!)");
-    }
-
+    print_answer(f, ans, iter, "На концах отрезка одинаковые знаки! (корня нет!)");
     printf("\n");
 }

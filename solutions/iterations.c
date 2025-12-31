@@ -33,15 +33,9 @@ void run_iterations_method(double (*f)(double), double (*iter_f)(double), double
         const double x0 = (a + b) / 2.0;
         int iter;
         const double ans = iterations_method(iter_f, x0, eps, max_iterations_count, &iter);
-        if (!isnan(ans)) {
-            printf("Корень: %.10f (итераций: %d)\n", ans, iter);
-            const double value = fabs(f(ans));
-            printf("Невязка: %.15e", value);
-        } else {
-            printf("Метод не сошелся за %d итераций", max_iterations_count);
-        }
+        print_iterations_answer(f, ans, iter, max_iterations_count);
     } else {
-        printf("Метод итераций не применим.");
+        printf("Метод итераций не применим");
     }
     printf("\n");
 }
