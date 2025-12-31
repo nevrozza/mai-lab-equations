@@ -1,10 +1,10 @@
 #include "solutions.h"
 
-double dichotomy_method(double (*f)(double), double a, double b, double eps, int *iter) {
+double dichotomy_method(double (*f)(double), double a, double b, const double eps, int *iter) {
     if (f(a) * f(b) >= 0) {
         return NAN;
     }
-    for (*iter = 0; (b - a) > eps; (*iter)++) { // while, но с подсчётом iter =)
+    for (*iter = 0; (b - a) > eps; (*iter)++) {
         double m = (a + b) / 2.0;
         if (f(m) == 0.0) break;
         if (f(a) * f(m) < 0)
@@ -15,14 +15,14 @@ double dichotomy_method(double (*f)(double), double a, double b, double eps, int
     return (a + b) / 2.0;
 }
 
-void run_dichotomy_method(double a, double b, const double eps) {
+void run_dichotomy_method(double (*f)(double), double a, double b, const double eps) {
     printf("МЕТОД ДИХОТОМИИ\n");
 
     int iter;
-    const double ans = dichotomy_method(F, a, b, eps, &iter);
+    const double ans = dichotomy_method(f, a, b, eps, &iter);
     if (!isnan(ans)) {
         printf("Корень: %.10f (итераций: %d)\n", ans, iter);
-        const double value = fabs(F(ans));
+        const double value = fabs(f(ans));
         printf("Невязка: %.15e", value);
     } else {
         printf("На концах отрезка одинаковые знаки! (корня нет!)");
