@@ -1,6 +1,6 @@
 #include <float.h>
 
-#include "solutions.h"
+#include "methods.h"
 
 bool check_newton_convergence(double (*f)(double), double (*df)(double), double (*ddf)(double), const double a,
                               const double b, const int steps_count) {

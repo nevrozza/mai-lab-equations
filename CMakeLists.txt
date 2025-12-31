@@ -8,8 +8,11 @@ add_executable(mai_lab_equation
 
         common/common.h
         common/common.c
+        common/f1.c
+        common/f2.c
 
-        solutions/solutions.h
-        solutions/iterations.c
-        solutions/newton.c
-        solutions/dichotomy.c)
+        methods/methods.h
+        methods/iterations.c
+        methods/newton.c
+        methods/dichotomy.c
+        methods/all_methods.c)

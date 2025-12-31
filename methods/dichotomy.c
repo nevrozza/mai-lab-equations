@@ -1,4 +1,4 @@
-#include "solutions.h"
+#include "methods.h"
 
 double dichotomy_method(double (*f)(double), double a, double b, const double eps, int *iter) {
     if (f(a) * f(b) >= 0) {

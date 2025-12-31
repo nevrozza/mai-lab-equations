@@ -1,4 +1,4 @@
-#include "solutions.h"
+#include "methods.h"
 
 bool check_iter_convergence(double (*d_iter_f)(double), const double a, const double b, const int steps_count) {
     double max_abs = 0;
