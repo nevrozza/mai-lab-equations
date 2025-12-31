@@ -5,9 +5,10 @@ set(CMAKE_C_STANDARD 17)
 
 add_executable(mai_lab_equation
         main.c
-        common/common.c
+        
         common/common.h
-        iterations/iterations.c
-        iterations/iterations.h
-        dichotomy/dichotomy.c
-        dichotomy/dichotomy.h)
+        common/common.c
+
+        solutions/solutions.h
+        solutions/iterations.c
+        solutions/dichotomy.c)

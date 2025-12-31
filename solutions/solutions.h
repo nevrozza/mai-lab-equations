@@ -1,5 +1,9 @@
-#ifndef ITERATIONS_H
-#define ITERATIONS_H
+//
+// Created by nevrozq on 31.12.2025.
+//
+
+#ifndef SOLUTIONS_H
+#define SOLUTIONS_H
 #include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -7,4 +11,6 @@
 
 void run_iterations_method(double a, double b, double eps, int convergence_steps_count, int max_iterations_count);
 
-#endif //ITERATIONS_H
+void run_dichotomy_method(double a, double b, double eps);
+
+#endif //SOLUTIONS_H

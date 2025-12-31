@@ -1,8 +1,6 @@
 #include <float.h>
-#include <stdio.h>
 
-#include "dichotomy/dichotomy.h"
-#include "iterations/iterations.h"
+#include "solutions/solutions.h"
 
 
 int main() {

@@ -1,4 +1,4 @@
-#include "iterations.h"
+#include "solutions.h"
 
 double iter_F(const double x) {
     return 2.0 - sin(1.0 / x);
