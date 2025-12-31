@@ -13,7 +13,7 @@ int main() {
 
     setvbuf(stdout, NULL, _IONBF, 0);
 
-    run_dichotomy_method(F, a, b, eps);
+    run_dichotomy_method(F, a, b, eps); // Без производных
 
     // analytic
     printf("\n=========== Аналитическое dF ===========\n");
