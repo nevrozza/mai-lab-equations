@@ -5,7 +5,7 @@
 
 
 int main() {
-    const double eps = DBL_EPSILON;
+    const double eps = 1e-12;
 
     const int convergence_steps_count = 100;
     const int max_iterations_count = 1000;
@@ -18,7 +18,7 @@ int main() {
                     d_iter_F1_analytic, d_iter_F1_numeric,
                     1.2, 2, eps, convergence_steps_count, max_iterations_count);
 
-    printf("\n----- e^x - ln x - 10x = 0 -----------------------------------------------------------\n\n");
+    printf("\n----- e^x + ln x - 10x = 0 -----------------------------------------------------------\n\n");
     run_all_methods(F2, iter_F2,
                     dF2_analytic, dF2_numeric,
                     ddF2_analytic, ddF2_numeric,

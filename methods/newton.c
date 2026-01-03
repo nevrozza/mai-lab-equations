@@ -5,10 +5,18 @@
 bool check_newton_convergence(double (*f)(double), double (*df)(double), double (*ddf)(double), const double a,
                               const double b, const int steps_count) {
     const double step = (b - a) / steps_count;
-    for (int i = 0; i < steps_count; i++) {
+
+    for (int i = 0; i < steps_count + 1; i++) {
         const double x = a + step * i;
-        const double d_v_value = df(x);
-        if (fabs(f(x) * ddf(x)) >= (d_v_value * d_v_value)) {
+        const double fx = f(x);
+        const double dfx = df(x);
+        const double ddfx = ddf(x);
+
+        if (isnan(fx) || isnan(dfx) || isnan(ddfx)) {
+            return false;
+        }
+        if (fabs(fx * ddfx) >= dfx * dfx) {
+            printf("%lf\n", x);
             return false;
         }
     }
@@ -32,17 +40,18 @@ double newton_method(double (*f)(double), double (*df)(double), const double x0,
     return NAN;
 }
 
-void run_newton_method(double (*f)(double), double (*df)(double), double (*ddf)(double), const double a, const double b, const double eps, const int convergence_steps_count,
-                           const int max_iterations_count) {
+void run_newton_method(double (*f)(double), double (*df)(double), double (*ddf)(double), const double a, const double b,
+                       const double eps, const int convergence_steps_count,
+                       const int max_iterations_count) {
     printf("МЕТОД НЬЮТОНА\n");
     // ctrl+c from iterations method...
-    if (check_newton_convergence(f, df, ddf, a, b, convergence_steps_count)) {
-        const double x0 = (a + b) / 2.0;
-        int iter;
-        const double ans = newton_method(f, df, x0, eps, max_iterations_count, &iter);
-        print_iterations_answer(f, ans, iter, max_iterations_count);
-    } else {
-        printf("Метод Ньютона не применим");
+    if (!check_newton_convergence(f, df, ddf, a, b, convergence_steps_count)) {
+        printf("Нарушено достаточное условие сходимости метода! (Про F2: корень ЕСТЬ на отрезке [3, 4], но достаточное условие сходимости выполняется только на [3.118638998, 4])\n");
     }
+    const double x0 = (a + b) / 2.0;
+    int iter;
+    const double ans = newton_method(f, df, x0, eps, max_iterations_count, &iter);
+    print_iterations_answer(f, ans, iter, max_iterations_count);
+
     printf("\n");
 }
